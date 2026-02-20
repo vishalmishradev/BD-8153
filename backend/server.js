@@ -1,12 +1,12 @@
 import http from "http";
 
 const server = http.createServer((req, res) => {
-   // ✅ CORS headers (REQUIRED)
+   //  to prevent cors error
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // ✅ Handle preflight request
+  //  Handle preflight request
   if (req.method === "OPTIONS") {
     res.writeHead(204);
     res.end();
