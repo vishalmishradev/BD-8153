@@ -16,4 +16,16 @@ console.log(array.length); //calculating buffer length
 
 //output ABC
 
+const writeBuffer = Buffer.alloc(10); //used for writing in the alloacated memory
+writeBuffer.write("hii");
+console.log(writeBuffer.toString());
+console.log(writeBuffer.toJSON);
+
+
+const password = Buffer.from("password");
+
+const base64 = buffer.toString("base64");
+
+console.log(base64);
+
 
