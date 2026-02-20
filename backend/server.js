@@ -1,34 +1,37 @@
 import http from "http";
-const port = 3000;
 
 const server = http.createServer((req, res) => {
+   // ✅ CORS headers (REQUIRED)
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  if (req.url === "/") {
-    res.end( "Welcome to home page!!");
+  // ✅ Handle preflight request
+  if (req.method === "OPTIONS") {
+    res.writeHead(204);
+    res.end();
+    return;
   }
-  else if(req.url === "/about"){
-    res.end("It's my about page!!")
-  }
-  else if(req.url === "/contact"){
-    res.end("It's my contact page!!")
-  }
+  
+  if (req.url == "/api/greet") {
+    res.writeHead(200, { "Content-Type": "application/json" });
 
-  if(req.url === "/api/user")
-  {
-    const user = {
-        name:"Vishal",
-        from:"JSR",
-        role:"sde"
-    }
-    res.writeHead(200, {"Content-Type": "application/json"});
-    res.end(JSON.stringify(user));
+    const responseData = {
+      message: "Hello! Good Morning!!.",
+      status: "success",
+    };
+    res.write(JSON.stringify(responseData));
+  } else {
+    res.end("end point not exists");
+    return;
   }
-
-  else {
-    res.end("Endpoint not found");
-  }
+  res.end();
 });
 
-server.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-});
+const startServer = (port) => {
+  server.listen(port, () => {
+    console.log(`server is up and running on port: ${port}`);
+  });
+};
+
+startServer(3000);
