@@ -1,3 +1,5 @@
+// Worker Threads allow you to run JavaScript in parallel threads in OpenJS Foundation’s Node.js runtime.
+
 const {Worker} = require('worker_threads');
 const worker = new Worker('./worker.js');
 
