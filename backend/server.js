@@ -12,12 +12,12 @@ const server = http.createServer((req, res) => {
     res.end();
     return;
   }
-  
+
   if (req.url == "/api/greet") {
     res.writeHead(200, { "Content-Type": "application/json" });
 
     const responseData = {
-      message: "Hello! Good Morning!!.",
+      message: "Hello! Good Morning!!🙏🙏",
       status: "success",
     };
     res.write(JSON.stringify(responseData));

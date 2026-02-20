@@ -7,6 +7,6 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "start": "test server.js"
+    "start": "node server.js"
   }
 }
